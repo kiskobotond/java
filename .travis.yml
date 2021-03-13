@@ -1,1 +1,5 @@
-script: ./mvnw package
+language: java
+jdk:
+  - openjdk11
+script:
+  - ./mvnw package
