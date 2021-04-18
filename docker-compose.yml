@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:9.2
+    environment:
+      POSTGRES_DB: shrugme
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+    ports:
+      - "5432:5432/tcp"
+    networks:
+      - shrugme
+
+networks:
+  shrugme:
+    driver: bridge

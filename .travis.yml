@@ -4,6 +4,6 @@ jdk:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database testdb;' -U postgres
+  - psql -c 'create database shrugme;' -U postgres
 script:
   - ./mvnw package
