@@ -2,9 +2,8 @@ package com.github.kiskobotond.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,13 +16,17 @@ public class Profile {
 
     @Id
     private String emailAddress;
+    @Column(nullable = false)
     private String passwordHash;
     private String description;
     private char sex;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Location location;
 
-//    @OneToMany
-//    private List<FriendRequest> friendRequests;
+    @OneToMany(mappedBy = "receiver", cascade = {CascadeType.ALL})
+    private List<FriendRequest> receivedFriendRequests;
+
+    @OneToMany(mappedBy = "sender", cascade = {CascadeType.ALL})
+    private List<FriendRequest> sentFriendRequests;
 }

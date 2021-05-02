@@ -1,19 +1,29 @@
 package com.github.kiskobotond.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
 
-//@Entity
+import javax.persistence.*;
+
+@Getter
+@Setter
+@Entity
+@Builder
+@NoArgsConstructor
+@EqualsAndHashCode
+@AllArgsConstructor
 public class FriendRequest {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private int id;
-//
-//
-//    private Profile sender;
-//
-//    private Profile receiver;
-//    private Status status;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+
+    @ManyToOne
+    @JoinColumn(nullable=false)
+    private Profile sender;
+
+    @ManyToOne
+    @JoinColumn(nullable=false)
+    private Profile receiver;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
